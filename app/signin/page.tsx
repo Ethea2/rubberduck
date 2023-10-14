@@ -19,7 +19,7 @@ const SignIn = () => {
                             className="flex-grow bg-inherit focus:outline-none"
                         />
                     </div>
-                    <div className="pb-1.5 flex flex gap-4 border-b-2 border-white bg-inherit">
+                    <div className="pb-1.5 flex gap-4 border-b-2 border-white bg-inherit">
                         <p>Password</p>
                         <input
                             type="password"
