@@ -1,4 +1,4 @@
-const SignIn = () => {
+const SignUp = () => {
     return (
         <main className="w-full h-screen flex justify-center items-center">
             <div className="w-[40%] flex flex-col text-white">
@@ -19,6 +19,14 @@ const SignIn = () => {
                             className="flex-grow bg-inherit focus:outline-none"
                         />
                     </div>
+                    <div className="pb-1.5 flex gap-4 border-b-2 border-white bg-inherit">
+                        <p>Email</p>
+                        <input
+                            type="text"
+                            required={true}
+                            className="flex-grow bg-inherit focus:outline-none"
+                        />
+                    </div>
                     <div className="pb-1.5 flex flex gap-4 border-b-2 border-white bg-inherit">
                         <p>Password</p>
                         <input
@@ -27,12 +35,9 @@ const SignIn = () => {
                             className="flex-grow bg-inherit focus:outline-none"
                         />
                     </div>
-                    <div className="flex justify-end items-center gap-8">
-                        <button className="text-[#FFBD69] uppercase">
-                            Login
-                        </button>
-                        <button className="transition-transform transform origin-center ease-in duration-70 hover:scale-110 uppercase">
-                            Sign Up
+                    <div className="flex justify-center items-center gap-8">
+                        <button className="mt-8 py-2 px-4 bg-gradient-to-r to-[#395B64] from-[#D9D9D9] text-white font-bold rounded-md transition-transform transform origin-start ease-in duration-70 hover:scale-105">
+                            Create Account
                         </button>
                     </div>
                 </div>
@@ -41,4 +46,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default SignUp;
