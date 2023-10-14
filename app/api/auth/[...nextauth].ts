@@ -1,9 +1,10 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "@/models/userModel";
 import bcrypt from "bcrypt";
+import { EXPORT_DETAIL } from "next/dist/shared/lib/constants";
 
-const authOptions = {
+const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
@@ -25,3 +26,5 @@ const authOptions = {
         }),
     ],
 };
+
+export default NextAuth(authOptions);
