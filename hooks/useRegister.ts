@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { toast, Id } from "react-toastify"
-import { RedirectType, redirect } from "next/navigation"
+// import { RedirectType, redirect } from "next/navigation"
 
 const useRegister = () => {
     const [isLoading, setLoading] = useState<boolean | null>(null)
@@ -44,10 +44,8 @@ const useRegister = () => {
                 type: "success",
                 isLoading: false
             })
-            redirect("/signin", 'replace' as RedirectType)
         }
         catch (e) {
-            console.log(e)
             toast.update(toastID.current ?? "", {
                 render: "Oops! Something went wrong!",
                 autoClose: 3000,
