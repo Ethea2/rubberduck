@@ -30,7 +30,7 @@ export const POST = async (req: Request) => {
     });
 
     if (newUser)
-        return NextResponse.redirect(loginUrl).json({ message: "Successfully Registered!" });
+        return NextResponse.json({ message: "Successfully Registered!" });
 
     return NextResponse.json({ message: "Something went wrong!" }, {status: 500});
 };

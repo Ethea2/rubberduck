@@ -44,7 +44,6 @@ const useRegister = () => {
                 type: "success",
                 isLoading: false
             })
-            redirect("/signin", 'replace' as RedirectType)
         }
         catch (e) {
             console.log(e)
