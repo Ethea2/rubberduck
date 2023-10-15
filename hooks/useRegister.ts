@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation"
 import { useRef, useState } from "react"
 import { toast, Id } from "react-toastify"
 // import { RedirectType, redirect } from "next/navigation"
@@ -6,6 +7,7 @@ const useRegister = () => {
     const [isLoading, setLoading] = useState<boolean | null>(null)
     const [isError, setError] = useState<string | null>(null)
     const toastID = useRef<Id>()
+    const router = useRouter()
 
     const signup = async (username:string, email:string, password:string) => {
         toastID.current = toast.loading("Registering now...")
@@ -44,6 +46,7 @@ const useRegister = () => {
                 type: "success",
                 isLoading: false
             })
+            router.push('/signin')
         }
         catch (e) {
             toast.update(toastID.current ?? "", {
