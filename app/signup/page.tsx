@@ -13,7 +13,6 @@ const SignUp = () => {
     const [password, setPassword] = useState<string>("");
 
     const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
-        //
         setUsername(e.target.value);
     };
 
@@ -54,6 +53,7 @@ const SignUp = () => {
                             required={true}
                             className="flex-grow bg-inherit focus:outline-none"
                             onChange={handleUsernameChange}
+                            value={username}
                         />
                     </div>
                     <div className="pb-1.5 flex gap-4 border-b-2 border-white bg-inherit">
@@ -63,6 +63,7 @@ const SignUp = () => {
                             required={true}
                             className="flex-grow bg-inherit focus:outline-none"
                             onChange={handleEmailChange}
+                            value={email}
                         />
                     </div>
                     <div className="pb-1.5 flex flex gap-4 border-b-2 border-white bg-inherit">
@@ -72,6 +73,7 @@ const SignUp = () => {
                             required={true}
                             className="flex-grow bg-inherit focus:outline-none"
                             onChange={handlePasswordChange}
+                            value={password}
                         />
                     </div>
                     <div className="flex justify-center items-center gap-8">
