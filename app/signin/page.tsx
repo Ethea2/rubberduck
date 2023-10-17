@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useRef } from "react";
 import { CiFaceSmile } from "react-icons/ci";
 import { SignInResponse, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast, Id } from "react-toastify";
 
 const SignIn = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [error, setError] = useState<string>("");
+    const toastID = useRef<Id>();
 
     const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -21,7 +23,9 @@ const SignIn = () => {
 
     const router = useRouter();
 
-    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleSubmit = async (
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
         e.preventDefault();
         try {
             const res: SignInResponse | undefined = await signIn(
@@ -35,8 +39,16 @@ const SignIn = () => {
 
             if (res?.error !== null) {
                 setError(res?.error as string);
+                toast.update(toastID.current ?? "", {
+                    render: error,
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    type: "error",
+                    isLoading: false,
+                });
             } else if (res?.error === null) {
-                router.push("/");
+                router.push("/dashboard");
             }
         } catch (error) {
             console.log(error);
@@ -44,7 +56,7 @@ const SignIn = () => {
     };
 
     return (
-        <main className="w-full h-screen flex justify-center items-center">
+        <main className="w-full h-screen flex justify-center items-center bg-white">
             <div className="w-[40%] flex flex-col text-white">
                 <div className="px-6 py-2 flex items-center justify-between bg-[#323643] rounded-t-lg">
                     <div>
