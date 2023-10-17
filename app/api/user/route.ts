@@ -6,6 +6,6 @@ export const GET = async (request: Request) => {
     const { username } = await request.json();
     connectMongo();
     const user = await User.findOne({ username });
-    return NextResponse.json({ user });
+    return NextResponse.json({ user }, {status: 200});
 };
 

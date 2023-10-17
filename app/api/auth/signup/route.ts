@@ -11,7 +11,7 @@ export const POST = async (req: Request) => {
     connectMongo();
 
     if (!username || !password || !email) {
-        return NextResponse.json({ message: "Missing parameters" }, {status: 400});
+        return NextResponse.json({ message: "Fill out all required fields." }, {status: 400});
     }
 
     const user = await User.findOne({
