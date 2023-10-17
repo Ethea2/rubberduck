@@ -21,7 +21,7 @@ const SignIn = () => {
 
     const router = useRouter();
 
-    const handleSubmit = async (e: ChangeEvent<HTMLInputElement>) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         try {
             const res: SignInResponse | undefined = await signIn(
@@ -32,11 +32,12 @@ const SignIn = () => {
                     redirect: false,
                 }
             );
-            if (res && res.error) {
-                setError("Invalid Credentials");
-            }
 
-            router.push("/");
+            if (res?.error !== null) {
+                setError(res?.error as string);
+            } else if (res?.error === null) {
+                router.push("/");
+            }
         } catch (error) {
             console.log(error);
         }
@@ -80,7 +81,7 @@ const SignIn = () => {
                     <div className="flex justify-end items-center gap-8">
                         <button
                             className="text-[#FFBD69] uppercase"
-                            onClick={handleSubmit}
+                            onClick={(e) => handleSubmit(e)}
                         >
                             Login
                         </button>

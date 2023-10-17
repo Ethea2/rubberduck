@@ -13,7 +13,6 @@ const useRegister = () => {
         toastID.current = toast.loading("Registering now...")
         setLoading(true)
         setError(null)
-        console.log(process.env.NEXT_PUBLIC_API_URL)
         try {
             const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/auth/signup', {
                 method: 'POST',
@@ -37,7 +36,7 @@ const useRegister = () => {
                 })
                 return
             }
-    
+
             toast.update(toastID.current ?? "", {
                 render: json.message,
                 autoClose: 3000,

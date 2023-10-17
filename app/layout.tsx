@@ -20,9 +20,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body className={inter.className}>
-                <AuthProvider>
+        <AuthProvider>
+            <html lang="en">
+                <body className={inter.className}>
                     {children}
                     <ToastContainer
                         position="bottom-center"
@@ -36,8 +36,8 @@ export default function RootLayout({
                         pauseOnHover
                         theme="dark"
                     />
-                </AuthProvider>
-            </body>
-        </html>
+                </body>
+            </html>
+        </AuthProvider>
     );
 }
