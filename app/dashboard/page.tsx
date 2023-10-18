@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { toast, Id } from "react-toastify";
 import Navbar from "@/components/Navbar";
+import DashboardContents from "@/components/DashboardContents";
 
 const Dashboard = () => {
     const { data: session, status } = useSession();
@@ -31,7 +32,10 @@ const Dashboard = () => {
             {status === "loading" ? (
                 <span className="loading loading-spinner loading-xs m-auto"></span>
             ) : (
-                <Navbar data={session?.user?.name as string} />
+                <div className="w-full">
+                    <Navbar data={session?.user?.name as string} />
+                    <DashboardContents user={session?.user?.name as string} />
+                </div>
             )}
         </div>
     );
